@@ -1,6 +1,7 @@
 package com.kiran.controllers;
 
 import com.kiran.Model.ValueSet;
+import com.kiran.Model.ValueSet.API_NAME;
 import com.kiran.services.CommonService;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -38,7 +39,7 @@ public class Controller implements Initializable {
         ArrayList<TreeItem<String>> baseChild = new ArrayList<>();
         root = new TreeItem<>();
         root.setExpanded(true);
-        for (ValueSet.API_NAME apiName : ValueSet.API_NAME.values()) {
+        for (API_NAME apiName : API_NAME.values()) {
             baseChild.add(makeBranch(apiName.name(), root));
             for (ValueSet.API_METHOD apiMethod : apiName.getAllowedMethods()) {
                 makeBranch(apiMethod.name(), baseChild.get(apiName.ordinal()));
@@ -49,8 +50,8 @@ public class Controller implements Initializable {
         treeView.setShowRoot(false);
         treeView.getSelectionModel().selectedItemProperty().addListener((v, oldValue, newValue) -> {
             if (newValue != null) {
-                //String output = service.getSampleResponse(newValue.getParent().getValue(), newValue.getValue());
-                outputBox.setText("hi");
+                String output = service.getSampleResponse(newValue.getParent().getValue(), newValue.getValue());
+                outputBox.setText(output);
             }
         });
     }
@@ -62,10 +63,6 @@ public class Controller implements Initializable {
         return item;
     }
 
-
-//    public void listeners() {
-//
-//    }
 
 
 }
