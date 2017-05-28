@@ -1,5 +1,7 @@
 package com.kiran.services;
 
+import com.kiran.Model.ValueSet.USER;
+
 /**
  * Created by Kiran on 5/28/17.
  */
@@ -48,5 +50,13 @@ public class CommonService {
         return null;
     }
 
+    public static boolean isValidUser(String user, String password) {
+        for (USER u : USER.values()) {
+            if (u.name().equalsIgnoreCase(user) && u.getPassword().equals(password)) {
+                return true;
+            }
+        }
+        return false;
+    }
 
 }

@@ -5,10 +5,9 @@ import com.kiran.Model.ValueSet.API_NAME;
 import com.kiran.services.CommonService;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TreeItem;
-import javafx.scene.control.TreeView;
+import javafx.scene.control.*;
+import javafx.scene.layout.HBox;
+import javafx.scene.text.Font;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -27,8 +26,47 @@ public class Controller implements Initializable {
     @FXML
     public TextArea outputBox;
 
+    @FXML
+    public HBox loginPage;
+
+    @FXML
+    public HBox welcomePage;
+
+    @FXML
+    public Label welcomeLabel;
+
+    @FXML
+    public TextField userName;
+
+    @FXML
+    public PasswordField password;
+
+    public void unluckUI() {
+        loginPage.setVisible(false);
+        welcomeLabel.setText("Welcome to the Slate");
+        welcomePage.setVisible(true);
+        outputBox.setPromptText("");
+        outputBox.setFont(new Font(15));
+        outputBox.setDisable(false);
+        treeView.setDisable(false);
+    }
+
+    public void lockUI() {
+
+    }
+
     public void loginButtonClicked() {
-        System.out.println("Clicked");
+        String user = userName.getText();
+        String pass = password.getText();
+        if (user.length() !=0 && password.getLength() != 0) {
+            if (service.isValidUser(user, pass)) {
+                unluckUI();
+            } else {
+               userName.setStyle("-fx-text-fill: red");
+               password.setStyle("-fx-text-fill: red");
+            }
+        }
+
     }
 
     @Override
@@ -45,7 +83,6 @@ public class Controller implements Initializable {
                 makeBranch(apiMethod.name(), baseChild.get(apiName.ordinal()));
             }
         }
-
         treeView.setRoot(root);
         treeView.setShowRoot(false);
         treeView.getSelectionModel().selectedItemProperty().addListener((v, oldValue, newValue) -> {

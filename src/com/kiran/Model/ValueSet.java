@@ -8,6 +8,20 @@ import java.util.Set;
  */
 public class ValueSet {
 
+    public enum USER{
+        KIRAN("password");
+
+        private String password;
+
+        USER(String password) {
+            this.password = password;
+        }
+
+        public String getPassword() {
+            return password;
+        }
+    }
+
     public enum API_NAME{
         PRODUCT(EnumSet.of(API_METHOD.READ, API_METHOD.CREATE)),
         PRICE_CATEGORY(EnumSet.of(API_METHOD.READ, API_METHOD.CREATE));
