@@ -1,5 +1,6 @@
 package com.kiran.controllers;
 
+import com.kiran.Model.ValueSet;
 import com.kiran.services.CommonService;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -9,11 +10,12 @@ import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
 
-    CommonService service = new CommonService();
+    CommonService service;
 
     @FXML
     public TreeView<String> treeView;
@@ -30,24 +32,25 @@ public class Controller implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        TreeItem<String> root, productAPI, priceCategoryAPI;
+        TreeItem<String> root;
+        service = new CommonService();
+
+        ArrayList<TreeItem<String>> baseChild = new ArrayList<>();
         root = new TreeItem<>();
         root.setExpanded(true);
-
-        productAPI = makeBranch("Product API", root);
-        makeBranch("Sample Create", productAPI);
-        makeBranch("Sample Read", productAPI);
-
-        priceCategoryAPI = makeBranch("Price Category API", root);
-        makeBranch("Sample Create", priceCategoryAPI);
-        makeBranch("Sample Read", priceCategoryAPI);
+        for (ValueSet.API_NAME apiName : ValueSet.API_NAME.values()) {
+            baseChild.add(makeBranch(apiName.name(), root));
+            for (ValueSet.API_METHOD apiMethod : apiName.getAllowedMethods()) {
+                makeBranch(apiMethod.name(), baseChild.get(apiName.ordinal()));
+            }
+        }
 
         treeView.setRoot(root);
         treeView.setShowRoot(false);
         treeView.getSelectionModel().selectedItemProperty().addListener((v, oldValue, newValue) -> {
             if (newValue != null) {
-                String output = service.getSampleResponse(newValue.getParent().getValue(), newValue.getValue());
-                outputBox.setText(output);
+                //String output = service.getSampleResponse(newValue.getParent().getValue(), newValue.getValue());
+                outputBox.setText("hi");
             }
         });
     }
@@ -58,5 +61,11 @@ public class Controller implements Initializable {
         parent.getChildren().add(item);
         return item;
     }
+
+
+//    public void listeners() {
+//
+//    }
+
 
 }
