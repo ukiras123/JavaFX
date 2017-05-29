@@ -35,37 +35,43 @@ public class MainController extends BaseController{
 
     @FXML public Button loginButton;
     @FXML public Button signupButton;
+    @FXML public Button logOut;
+    @FXML public Label loginError;
 
-
-    public void unluckUI() {
+    public void unlockUI() {
         loginPage.setVisible(false);
         welcomeLabel.setText("Welcome to the Slate, " + getFirstName() + ".");
         welcomePage.setVisible(true);
-        outputBox.setPromptText("");
         outputBox.setFont(new Font(15));
+        outputBox.setPromptText("");
         outputBox.setDisable(false);
         treeView.setDisable(false);
     }
 
     public void lockUI() {
-
+        loginPage.setVisible(true);
+        welcomeLabel.setText("");
+        welcomePage.setVisible(false);
+        outputBox.setFont(new Font(15));
+        outputBox.setPromptText("Login to Unlock");
+        outputBox.setDisable(true);
+        treeView.setDisable(true);
     }
 
     public void loginProcess() {
         System.out.println("login clicked");
         String u = userName.getText();
         String p = password.getText();
-
         if ((u.length() !=0) && (p.length() != 0)) {
             User  user = new UserAuthenticationService().isValidUser(u, p);
             if (user != null) {
-                unluckUI();
                 setUserName(user.getUserName());
                 setFirstName(user.getFirstName());
                 setLastName(user.getLastName());
+                unlockUI();
             } else {
-                userName.setStyle("-fx-text-fill: red");
-                password.setStyle("-fx-text-fill: red");
+                loginError.setStyle("-fx-text-fill: red");
+                loginError.setText("Invalid User/Pass");
             }
         }
     }
@@ -102,7 +108,11 @@ public class MainController extends BaseController{
         treeView.setShowRoot(false);
         treeView.getSelectionModel().selectedItemProperty().addListener((v, oldValue, newValue) -> {
             if (newValue != null) {
-                String output = new APIDetailService().getSampleResponse(newValue.getParent().getValue(), newValue.getValue());
+                String output = "";
+                if(!(newValue.getParent().getValue() == null))
+                {
+                    output = new APIDetailService().getSampleResponse(newValue.getParent().getValue(), newValue.getValue());
+                }
                 outputBox.setText(output);
             }
         });
@@ -117,12 +127,22 @@ public class MainController extends BaseController{
 
 
     @FXML protected void loginEvent(ActionEvent event) {
+        loginError.getStyleClass().clear();
+        loginError.setText("");
         loginProcess();
     }
 
 
     @FXML protected void signupEvent(ActionEvent event) {
+        loginError.getStyleClass().clear();
+        loginError.setText("");
         signupProcess();
+    }
+
+    @FXML protected void logOutEvent(ActionEvent event) {
+        loginError.getStyleClass().clear();
+        loginError.setText("");
+        lockUI();
     }
 
 

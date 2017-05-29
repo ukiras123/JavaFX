@@ -46,6 +46,11 @@
                      <children>
                         <TextField fx:id="userName" promptText="username" />
                         <PasswordField fx:id="password" promptText="password" />
+                        <Label fx:id="loginError">
+                           <HBox.margin>
+                              <Insets top="6.0" />
+                           </HBox.margin>
+                        </Label>
                         <Region HBox.hgrow="ALWAYS" />
                         <Button fx:id="loginButton" mnemonicParsing="false" onAction="#loginEvent" text="Login" />
                         <Button fx:id="signupButton" layoutX="344.0" layoutY="10.0" mnemonicParsing="false" onAction="#signupEvent" text="Sign Up" HBox.hgrow="ALWAYS" />
@@ -63,9 +68,12 @@
                            <font>
                               <Font name="System Bold" size="20.0" />
                            </font>
+                           <HBox.margin>
+                              <Insets right="7.0" />
+                           </HBox.margin>
                         </Label>
                         <Region />
-                        <Button alignment="CENTER_RIGHT" mnemonicParsing="false" opacity="0.64" text="Logout" textAlignment="CENTER" />
+                        <Button fx:id="logOut" alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#logOutEvent" opacity="0.64" text="Logout" textAlignment="CENTER" />
                      </children>
                   </HBox>
                </children>
@@ -80,7 +88,7 @@
       </VBox>
    </top>
    <center>
-      <TextArea fx:id="outputBox" disable="true" editable="false" promptText="Login to Unluck" wrapText="true" BorderPane.alignment="CENTER">
+      <TextArea fx:id="outputBox" disable="true" editable="false" promptText="Login to Unlock" wrapText="true" BorderPane.alignment="CENTER">
          <font>
             <Font size="30.0" />
          </font></TextArea>

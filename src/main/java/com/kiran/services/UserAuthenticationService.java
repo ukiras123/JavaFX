@@ -18,14 +18,18 @@ public class UserAuthenticationService {
 
 
     public User isValidUser(String userName, String password) {
-        databaseService = new DatabaseService();
-        List<User> user = databaseService.readUser(userName, password);
-        if (user.isEmpty()) {
-            errors = new HashSet<>();
-            errors.add(USER_ERROR.LOGIN);
+        if (password.length() < 6 || StringUtils.isNumeric(userName) || Util.containsWhitespace(userName)) {
             return null;
         } else {
-            return user.get(0);
+            databaseService = new DatabaseService();
+            List<User> user = databaseService.readUser(userName, password);
+            if (user.isEmpty()) {
+                errors = new HashSet<>();
+                errors.add(USER_ERROR.LOGIN);
+                return null;
+            } else {
+                return user.get(0);
+            }
         }
     }
 
