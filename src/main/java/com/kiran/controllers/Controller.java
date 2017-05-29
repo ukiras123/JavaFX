@@ -66,7 +66,6 @@ public class Controller implements Initializable {
                password.setStyle("-fx-text-fill: red");
             }
         }
-
     }
 
     @Override

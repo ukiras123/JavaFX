@@ -1,11 +1,16 @@
 package com.kiran.services;
 
-import com.kiran.Model.ValueSet.USER;
+import com.kiran.Model.Entity.User;
+
+import java.util.List;
 
 /**
  * Created by Kiran on 5/28/17.
  */
 public class CommonService {
+
+
+    private static Database data;
 
     public String getSampleResponse(String parent, String method) {
         String response = "";
@@ -50,13 +55,17 @@ public class CommonService {
         return null;
     }
 
-    public static boolean isValidUser(String user, String password) {
-        for (USER u : USER.values()) {
-            if (u.name().equalsIgnoreCase(user) && u.getPassword().equals(password)) {
-                return true;
-            }
-        }
-        return false;
+
+    public static boolean isValidUser(String userName, String password) {
+//        for (USER u : USER.values()) {
+//            if (u.name().equalsIgnoreCase(user) && u.getPassword().equals(password)) {
+//                return true;
+//            }
+//        }
+//        return false;
+        data = new Database();
+        List<User> user = data.readUser(userName, password);
+        return user.isEmpty() ? false : true;
     }
 
 }
