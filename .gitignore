@@ -3,6 +3,9 @@
 
 ### Eclipse ###
 .idea
+*.eml
+*.iml
+*.userlibraries
 .metadata
 bin/
 tmp/
