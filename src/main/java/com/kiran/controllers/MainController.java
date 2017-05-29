@@ -8,7 +8,6 @@ import com.kiran.services.UserAuthenticationService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -19,11 +18,9 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.ResourceBundle;
 
-public class MainController extends BaseController implements Initializable{
+public class MainController extends BaseController{
 
 
     @FXML public TreeView<String> treeView;
@@ -90,8 +87,7 @@ public class MainController extends BaseController implements Initializable{
         stage.show();
     }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    public void initialize() {
         TreeItem<String> root;
         ArrayList<TreeItem<String>> baseChild = new ArrayList<>();
         root = new TreeItem<>();
