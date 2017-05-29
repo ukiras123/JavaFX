@@ -74,12 +74,16 @@ public class SignupController extends BaseController{
                     switch (error) {
                         case FIRST_NAME:
                             showError(firstNameError,error.getErrorMessage());
+                            break;
                         case LAST_NAME:
                             showError(lastNameError,error.getErrorMessage());
+                            break;
                         case USER_NAME:
                             showError(userNameError,error.getErrorMessage());
+                            break;
                         case PASSWORD:
                             showError(passwordError,error.getErrorMessage());
+                            break;
                     }
                 }
             }
