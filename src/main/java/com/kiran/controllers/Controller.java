@@ -76,7 +76,7 @@ public class Controller implements Initializable {
 
     public void signupProcess(){
         System.out.println("sign up am clicked");
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/signup.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/signup.fxml"));
         Parent root1 = null;
         try {
             root1 = (Parent) fxmlLoader.load();
@@ -86,7 +86,7 @@ public class Controller implements Initializable {
         Stage stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.initStyle(StageStyle.UNDECORATED);
-        stage.setTitle("SignUP");
+        stage.setTitle("Sign Up");
         stage.setScene(new Scene(root1));
         stage.showAndWait();
     }
