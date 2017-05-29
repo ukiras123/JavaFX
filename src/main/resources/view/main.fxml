@@ -42,7 +42,7 @@
             </MenuBar>
             <StackPane>
                <children>
-                  <HBox fx:id="loginPage">
+                  <HBox fx:id="loginPage" spacing="5.0">
                      <children>
                         <TextField fx:id="userName" promptText="username" />
                         <PasswordField fx:id="password" promptText="password" />

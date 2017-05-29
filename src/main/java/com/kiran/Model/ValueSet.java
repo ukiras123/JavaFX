@@ -22,6 +22,27 @@ public class ValueSet {
         }
     }
 
+
+    public enum USER_ERROR {
+        FIRST_NAME("Invalid String"),
+        LAST_NAME("Invalid String"),
+        USER_NAME("Invalid String/Already Exists"),
+        PASSWORD("Min 6 digits"),
+        LOGIN("Invalid user/pass");
+
+        private String errorMessage;
+        USER_ERROR(String errorMessage) {
+            this.errorMessage = errorMessage;
+        }
+
+        public String getErrorMessage() {
+            return errorMessage;
+        }
+    }
+
+
+
+
     public enum API_NAME{
         PRODUCT(EnumSet.of(API_METHOD.READ, API_METHOD.CREATE)),
         PRICE_CATEGORY(EnumSet.of(API_METHOD.READ, API_METHOD.CREATE));

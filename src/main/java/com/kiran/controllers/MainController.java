@@ -1,8 +1,10 @@
 package com.kiran.controllers;
 
+import com.kiran.Model.Entity.User;
 import com.kiran.Model.ValueSet;
 import com.kiran.Model.ValueSet.API_NAME;
-import com.kiran.services.CommonService;
+import com.kiran.services.APIDetailService;
+import com.kiran.services.UserAuthenticationService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,9 +23,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class MainController implements Initializable {
+public class MainController extends BaseController implements Initializable{
 
-    CommonService service;
 
     @FXML public TreeView<String> treeView;
 
@@ -41,7 +42,7 @@ public class MainController implements Initializable {
 
     public void unluckUI() {
         loginPage.setVisible(false);
-        welcomeLabel.setText("Welcome to the Slate");
+        welcomeLabel.setText("Welcome to the Slate, " + getFirstName() + ".");
         welcomePage.setVisible(true);
         outputBox.setPromptText("");
         outputBox.setFont(new Font(15));
@@ -55,12 +56,16 @@ public class MainController implements Initializable {
 
     public void loginProcess() {
         System.out.println("login clicked");
+        String u = userName.getText();
+        String p = password.getText();
 
-        String user = userName.getText();
-        String pass = password.getText();
-        if (user.length() !=0 && password.getLength() != 0) {
-            if (service.isValidUser(user, pass)) {
+        if ((u.length() !=0) && (p.length() != 0)) {
+            User  user = new UserAuthenticationService().isValidUser(u, p);
+            if (user != null) {
                 unluckUI();
+                setUserName(user.getUserName());
+                setFirstName(user.getFirstName());
+                setLastName(user.getLastName());
             } else {
                 userName.setStyle("-fx-text-fill: red");
                 password.setStyle("-fx-text-fill: red");
@@ -82,14 +87,12 @@ public class MainController implements Initializable {
         stage.initStyle(StageStyle.UNDECORATED);
         stage.setTitle("Sign Up");
         stage.setScene(new Scene(root1));
-        stage.showAndWait();
+        stage.show();
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         TreeItem<String> root;
-        service = new CommonService();
-
         ArrayList<TreeItem<String>> baseChild = new ArrayList<>();
         root = new TreeItem<>();
         root.setExpanded(true);
@@ -103,7 +106,7 @@ public class MainController implements Initializable {
         treeView.setShowRoot(false);
         treeView.getSelectionModel().selectedItemProperty().addListener((v, oldValue, newValue) -> {
             if (newValue != null) {
-                String output = service.getSampleResponse(newValue.getParent().getValue(), newValue.getValue());
+                String output = new APIDetailService().getSampleResponse(newValue.getParent().getValue(), newValue.getValue());
                 outputBox.setText(output);
             }
         });

@@ -32,11 +32,11 @@ public class User {
 
     }
 
-    public User(String userName, String password, String firstName, String lastName) {
-        this.userName = userName;
-        this.password = password;
+    public User(String firstName, String lastName, String userName, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.userName = userName;
+        this.password = password;
     }
 
     public int getId() {

@@ -11,7 +11,7 @@ import java.util.Set;
 /**
  * Created by Kiran on 5/28/17.
  */
-public class Database {
+public class DatabaseService implements Service {
 
     private SessionFactory factory;
 
@@ -43,14 +43,12 @@ public class Database {
             displayUsers(users);
             session.getTransaction().commit();
             System.out.println("Done!");
-
         }
         finally {
             factory.close();
         }
         return users;
     }
-
 
     public List<User> getAllUsers() {
         Session session = generateSession();
@@ -70,8 +68,6 @@ public class Database {
         }
         return users;
     }
-
-
 
     private  Session generateSession() {
         factory = new Configuration()

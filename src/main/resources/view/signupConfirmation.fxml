@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="280" prefWidth="500" xmlns="http://javafx.com/javafx/8.0.111"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.kiran.controllers.SignupConfirmationController">
+   <children>
+      <Label layoutX="175.0" layoutY="53.0" text="Congratulations!">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="97.0" layoutY="88.0" text="You are now part of Slate family.">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="97.0" layoutY="140.0" text="Username:">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <Label fx:id="userConfirmed" layoutX="216.0" layoutY="140.0"  textFill="LIGHTSLATEGRAY">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <Label layoutX="97.0" layoutY="200.0" text="Please login to our application to enjoy Slate products." />
+   </children>
+</AnchorPane>
