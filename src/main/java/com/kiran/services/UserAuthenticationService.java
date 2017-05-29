@@ -11,7 +11,7 @@ import java.util.Set;
 /**
  * Created by Kiran on 5/29/17.
  */
-public class UserAuthenticationService  implements Service {
+public class UserAuthenticationService {
 
     private static Set<USER_ERROR> errors;
     private DatabaseService databaseService;

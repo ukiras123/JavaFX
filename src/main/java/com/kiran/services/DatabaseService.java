@@ -6,12 +6,11 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 import java.util.List;
-import java.util.Set;
 
 /**
  * Created by Kiran on 5/28/17.
  */
-public class DatabaseService implements Service {
+public class DatabaseService {
 
     private SessionFactory factory;
 

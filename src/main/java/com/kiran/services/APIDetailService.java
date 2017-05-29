@@ -3,7 +3,7 @@ package com.kiran.services;
 /**
  * Created by Kiran on 5/28/17.
  */
-public class APIDetailService implements Service {
+public class APIDetailService {
 
 
     public String getSampleResponse(String apiName, String method) {
