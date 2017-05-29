@@ -3,12 +3,20 @@ package com.kiran.controllers;
 import com.kiran.Model.ValueSet;
 import com.kiran.Model.ValueSet.API_NAME;
 import com.kiran.services.CommonService;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Font;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -17,29 +25,25 @@ public class Controller implements Initializable {
 
     CommonService service;
 
-    @FXML
-    public TreeView<String> treeView;
+    @FXML public TreeView<String> treeView;
 
-    @FXML
-    public Button login;
+    @FXML public TextArea outputBox;
+    @FXML public HBox loginPage;
+    @FXML public HBox welcomePage;
+    @FXML public Label welcomeLabel;
 
-    @FXML
-    public TextArea outputBox;
+    @FXML public TextField userName;
+    @FXML public PasswordField password;
 
-    @FXML
-    public HBox loginPage;
+    @FXML public Button loginButton;
+    @FXML public Button signupButton;
 
-    @FXML
-    public HBox welcomePage;
-
-    @FXML
-    public Label welcomeLabel;
-
-    @FXML
-    public TextField userName;
-
-    @FXML
-    public PasswordField password;
+    @FXML public TextField signUpFirstName;
+    @FXML public TextField signUpLastName;
+    @FXML public TextField signUpUserName;
+    @FXML public PasswordField signUpPassword;
+    @FXML public Button signUpSubmit;
+    @FXML public Button signUpCancel;
 
     public void unluckUI() {
         loginPage.setVisible(false);
@@ -55,17 +59,36 @@ public class Controller implements Initializable {
 
     }
 
-    public void loginButtonClicked() {
+    public void loginProcess() {
+        System.out.println("login clicked");
+
         String user = userName.getText();
         String pass = password.getText();
         if (user.length() !=0 && password.getLength() != 0) {
             if (service.isValidUser(user, pass)) {
                 unluckUI();
             } else {
-               userName.setStyle("-fx-text-fill: red");
-               password.setStyle("-fx-text-fill: red");
+                userName.setStyle("-fx-text-fill: red");
+                password.setStyle("-fx-text-fill: red");
             }
         }
+    }
+
+    public void signupProcess(){
+        System.out.println("sign up am clicked");
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/signup.fxml"));
+        Parent root1 = null;
+        try {
+            root1 = (Parent) fxmlLoader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Stage stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.initStyle(StageStyle.UNDECORATED);
+        stage.setTitle("SignUP");
+        stage.setScene(new Scene(root1));
+        stage.showAndWait();
     }
 
     @Override
@@ -100,5 +123,18 @@ public class Controller implements Initializable {
     }
 
 
+    @FXML protected void loginEvent(ActionEvent event) {
+        loginProcess();
+    }
+
+
+    @FXML protected void signupEvent(ActionEvent event) {
+        signupProcess();
+    }
+
+    @FXML protected void cancelEvent(ActionEvent event) {
+        System.out.println("Cancel");
+        ((Stage)(((Button)event.getSource()).getScene().getWindow())).close();
+    }
 
 }

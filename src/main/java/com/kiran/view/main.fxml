@@ -47,8 +47,8 @@
                         <TextField fx:id="userName" promptText="username" />
                         <PasswordField fx:id="password" promptText="password" />
                         <Region HBox.hgrow="ALWAYS" />
-                        <Button fx:id="login" mnemonicParsing="false" onAction="#loginButtonClicked" text="Login" />
-                        <Button layoutX="344.0" layoutY="10.0" mnemonicParsing="false" text="Sign Up" HBox.hgrow="ALWAYS" />
+                        <Button fx:id="loginButton" mnemonicParsing="false" onAction="#loginEvent" text="Login" />
+                        <Button fx:id="signupButton" layoutX="344.0" layoutY="10.0" mnemonicParsing="false" onAction="#signupEvent" text="Sign Up" HBox.hgrow="ALWAYS" />
                      </children>
                   </HBox>
                   <HBox fx:id="welcomePage" alignment="TOP_CENTER" visible="false">
