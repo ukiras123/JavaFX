@@ -63,6 +63,7 @@ public class SignupController extends BaseController{
             if (service.isValidSignupInput(firstName, lastName, userName, password)) {
                 User newUser = new User(Util.convertToFirstCapital(firstName), Util.convertToFirstCapital(lastName), userName, password);
                 new DatabaseService().createUser(newUser);
+                ((Stage)(((Button)event.getSource()).getScene().getWindow())).close();
                 setUserName(userName);
                 setFirstName(firstName);
                 setLastName(lastName);
