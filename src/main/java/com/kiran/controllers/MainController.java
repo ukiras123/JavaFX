@@ -21,7 +21,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class Controller implements Initializable {
+public class MainController implements Initializable {
 
     CommonService service;
 
@@ -38,12 +38,6 @@ public class Controller implements Initializable {
     @FXML public Button loginButton;
     @FXML public Button signupButton;
 
-    @FXML public TextField signUpFirstName;
-    @FXML public TextField signUpLastName;
-    @FXML public TextField signUpUserName;
-    @FXML public PasswordField signUpPassword;
-    @FXML public Button signUpSubmit;
-    @FXML public Button signUpCancel;
 
     public void unluckUI() {
         loginPage.setVisible(false);
@@ -132,9 +126,6 @@ public class Controller implements Initializable {
         signupProcess();
     }
 
-    @FXML protected void cancelEvent(ActionEvent event) {
-        System.out.println("Cancel");
-        ((Stage)(((Button)event.getSource()).getScene().getWindow())).close();
-    }
+
 
 }
