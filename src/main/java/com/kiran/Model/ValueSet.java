@@ -8,21 +8,6 @@ import java.util.Set;
  */
 public class ValueSet {
 
-    public enum USER{
-        KIRAN("password");
-
-        private String password;
-
-        USER(String password) {
-            this.password = password;
-        }
-
-        public String getPassword() {
-            return password;
-        }
-    }
-
-
     public enum USER_ERROR {
         FIRST_NAME("Invalid String"),
         LAST_NAME("Invalid String"),
@@ -40,12 +25,20 @@ public class ValueSet {
         }
     }
 
-
-
-
     public enum API_NAME{
         PRODUCT(EnumSet.of(API_METHOD.READ, API_METHOD.CREATE)),
-        PRICE_CATEGORY(EnumSet.of(API_METHOD.READ, API_METHOD.CREATE));
+        PRICE_CATEGORY(EnumSet.of(API_METHOD.READ, API_METHOD.CREATE)),
+        FULFILLMENT_ITEM(EnumSet.of(API_METHOD.READ, API_METHOD.CREATE)),
+        SINGLE(EnumSet.of(API_METHOD.READ, API_METHOD.CREATE)),
+        FIXED_BUNDLE(EnumSet.of(API_METHOD.READ, API_METHOD.CREATE)),
+        CHOICE_BUNDLE(EnumSet.of(API_METHOD.READ, API_METHOD.CREATE)),
+        SUBSCRIPTION(EnumSet.of(API_METHOD.READ, API_METHOD.CREATE)),
+        PRICE_MODEL(EnumSet.of(API_METHOD.READ, API_METHOD.CREATE)),
+        TIERED_SHIPPING_RATE(EnumSet.of(API_METHOD.READ, API_METHOD.CREATE)),
+        INSTALLMENT_PLAN(EnumSet.of(API_METHOD.READ, API_METHOD.CREATE)),
+        SCHEDULE(EnumSet.of(API_METHOD.READ, API_METHOD.CREATE)),
+        CONTINUITY_PLAN(EnumSet.of(API_METHOD.READ, API_METHOD.CREATE)),
+        MARKETING_PROGRAM(EnumSet.of(API_METHOD.READ, API_METHOD.CREATE));
 
         private Set<API_METHOD> allowedMethods;
 
@@ -57,6 +50,9 @@ public class ValueSet {
             return allowedMethods;
         }
     }
+
+
+
     public enum API_METHOD{
         READ,
         CREATE

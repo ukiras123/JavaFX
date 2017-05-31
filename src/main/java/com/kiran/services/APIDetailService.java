@@ -7,21 +7,25 @@ public class APIDetailService {
 
 
     public String getSampleResponse(String apiName, String method) {
-        String response = "";
-        switch (apiName) {
-            case "PRODUCT":
-                return getProductResponse(method);
+        if ( method.equalsIgnoreCase("READ")) {
+            return getReadResponse(apiName);
+        } else if (method.equalsIgnoreCase("CREATE")) {
+            return getCreateResponse(apiName);
         }
-    return "";
+
+
+        return "";
+
     }
 
-    public String getProductResponse(String method) {
-        if (method == "READ") {
+
+    private String getReadResponse(String apiName) {
             return Constants.productRead;
-        }
-        return null;
     }
 
+    private String getCreateResponse(String apiName) {
+            return Constants.productRead;
+    }
 
 
 }

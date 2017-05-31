@@ -78,7 +78,7 @@ public class MainController extends BaseController{
 
     public void signupProcess(){
         System.out.println("sign up am clicked");
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/signup.fxml"));
+       FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/signup.fxml"));
         Parent root1 = null;
         try {
             root1 = (Parent) fxmlLoader.load();

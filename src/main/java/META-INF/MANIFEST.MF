@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Class-Path: com.kiran.Class
+Main-Class: com.kiran.Main
+

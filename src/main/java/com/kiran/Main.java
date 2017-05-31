@@ -12,7 +12,8 @@ public class Main extends Application {
     private Stage stage;
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("/view/main.fxml"));
+        FXMLLoader loader = new FXMLLoader();
+        Parent root = (Parent) loader.load(Thread.currentThread().getContextClassLoader().getResourceAsStream("view/main.fxml"));
         this.stage = primaryStage;
         primaryStage.setTitle("SLATE");
         primaryStage.setScene(new Scene(root, 800, 700));
