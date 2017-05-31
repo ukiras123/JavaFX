@@ -15,7 +15,7 @@
 
         <!-- Remote Connection -->
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="connection.url">jdbc:mysql://slate-app.c01nw9dbn2gc.us-west-1.rds.amazonaws.com:3306/slate?useSSL=false</property>
+        <property name="connection.url">jdbc:mysql://slate.c01nw9dbn2gc.us-west-1.rds.amazonaws.com:3306/slate?useSSL=false</property>
         <property name="connection.username">root</property>
         <property name="connection.password">slateroot123</property>
 
