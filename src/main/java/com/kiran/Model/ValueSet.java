@@ -58,6 +58,19 @@ public class ValueSet {
         CREATE
     }
 
+    public enum PROGRESS_MESSAGE{
+        CHECK_BACK_SOON("Please check back soon.");
+
+        private String message;
+        PROGRESS_MESSAGE(String message) {
+            this.message = message;
+        }
+
+        public String getMessage() {
+            return message;
+        }
+    }
+
     public static API_NAME valueFor(String str) {
         try {
             return API_NAME.valueOf(str.toUpperCase());

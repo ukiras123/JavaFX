@@ -1,13 +1,11 @@
 package com.kiran.services;
 
+import com.kiran.Model.ValueSet.PROGRESS_MESSAGE;
+
 /**
  * Created by Kiran on 5/29/17.
  */
-public class Constants {
-
-    public enum RESPONSE{
-        PRODUCT_READ(ReadConstant.productRead);
-    }
+public final class Constants {
 
 
     class ReadConstant{
@@ -509,5 +507,42 @@ public class Constants {
 
     }
 
+    static class CreateConstant {
+    final static String productCreate = PROGRESS_MESSAGE.CHECK_BACK_SOON.name();
+
+    final static String fulfillmentCreate = PROGRESS_MESSAGE.CHECK_BACK_SOON.getMessage();
+
+    final static String singleCreate = PROGRESS_MESSAGE.CHECK_BACK_SOON.getMessage();
+
+
+    final static String fixedBundleCreate = PROGRESS_MESSAGE.CHECK_BACK_SOON.getMessage();
+
+
+    final static String choiceBundleCreate = PROGRESS_MESSAGE.CHECK_BACK_SOON.getMessage();
+
+    final static String subscriptionCreate = PROGRESS_MESSAGE.CHECK_BACK_SOON.getMessage();
+
+
+    final static String priceCategoryCreate = PROGRESS_MESSAGE.CHECK_BACK_SOON.getMessage();
+
+
+    final static String priceModelCreate = PROGRESS_MESSAGE.CHECK_BACK_SOON.getMessage();
+
+
+    final static String tieredShippingRateCreate = PROGRESS_MESSAGE.CHECK_BACK_SOON.getMessage();
+
+
+    final static String installmentPlanCreate = PROGRESS_MESSAGE.CHECK_BACK_SOON.getMessage();
+
+
+    final static String scheduleCreate = PROGRESS_MESSAGE.CHECK_BACK_SOON.getMessage();
+
+
+    final static String continuityPlanCreate = PROGRESS_MESSAGE.CHECK_BACK_SOON.getMessage();
+
+
+    final static String marketingProgramCreate = PROGRESS_MESSAGE.CHECK_BACK_SOON.getMessage();
+
+}
 
 }
